@@ -49,6 +49,7 @@ async function main() {
 
   const config = await prisma.config.create({
     data: {
+      shippingId: "1",
       longitude: "-7.100000",
       latitude: "110.400000",
       phone: "08123456789",
