@@ -56,7 +56,7 @@ const LoginPage = () => {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-12">
-      <Card className="w-full md:w-1/2 lg:w-1/3 p-4">
+      <Card className="w-full md:w-1/2 lg:w-1/3 p-4 rounded-lg border">
         <CardContent>
           <Typography
             gutterBottom
@@ -68,7 +68,7 @@ const LoginPage = () => {
           </Typography>
           <Typography variant="h5" component="div"></Typography>
           <Typography sx={{ color: "text.secondary", mb: 1.5 }}>
-            Masuk ke Jadoel
+            Masuk ke Keysha Geprek
           </Typography>
           <div className="h-4" />
           <div variant="body2" className="w-full flex flex-col gap-4">
@@ -102,7 +102,7 @@ const LoginPage = () => {
           <div className="w-full px-2 my-4">
             <Button
               variant="contained"
-              className="w-full h-12 flex items-center justify-center"
+              className="w-full h-12 flex items-center justify-center bg-red-500 hover:bg-red-600"
               onClick={handleLogin}
             >
               {loading ? <CircularProgress color="white" size={20} /> : "Login"}
