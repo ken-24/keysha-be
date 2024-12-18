@@ -22,6 +22,9 @@ async function main() {
       {
         name: "example",
         email: "example@example.com",
+        phone: "08123456789",
+        address: "Jl. Contoh No. 123",
+        status: 1,
         password: await bcrypt.hash("12345678", 10), // Use a hashed password in production
         status: 0,
       },
@@ -29,7 +32,21 @@ async function main() {
   });
 
   console.log(`${users.count} users created.`);
-  
+  const product = await prisma.product.createMany({
+    data: [
+      {
+        name: "Chicken",
+        description: "Enak Sekali",
+        price: 10000,
+        image:
+          "http://res.cloudinary.com/dmllc7qln/image/upload/v1734507459/keysha/product/hqst8jbtbn1uncjppizw.jpg",
+        type: 1,
+      },
+    ],
+  });
+
+  console.log(`${users.product} product created.`);
+
   const config = await prisma.config.create({
     data: {
       longitude: "-7.100000",

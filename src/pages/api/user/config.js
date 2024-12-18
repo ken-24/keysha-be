@@ -6,15 +6,15 @@ import {
 } from "@/helper/response";
 import userAuth from "@/middleware/userAuth";
 
-import { getStoreConfig } from "@/models/config";
+import { getConfig } from "@/models/config";
 
 async function handler(req, res) {
   try {
     if (req.method === "GET") {
-      const storeConfig = await getStoreConfig();
+      const storeConfig = await getConfig();
 
 
-      return res.status(200).json(resSuccess("data ongkir", storeConfig.phoneStore));
+      return res.status(200).json(resSuccess("data ongkir", storeConfig));
     }
 
     return res.status(405).json(resNotAllowed());
