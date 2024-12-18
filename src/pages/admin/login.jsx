@@ -55,8 +55,8 @@ const LoginPage = () => {
   }, [errorMessage]);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center p-12">
-      <Card className="w-full md:w-1/2 lg:w-1/3 p-4 rounded-lg border">
+    <div className="flex min-h-screen flex-col items-center justify-center p-12 bg-white">
+      <Card className="w-full md:w-1/2 lg:w-1/3 p-4 " style={{backgroundColor: "lightgray", borderRadius: "15px"}}>
         <CardContent>
           <Typography
             gutterBottom
@@ -64,7 +64,7 @@ const LoginPage = () => {
             className="text-black"
             variant="h4"
           >
-            Login Admin
+            Login
           </Typography>
           <Typography variant="h5" component="div"></Typography>
           <Typography sx={{ color: "text.secondary", mb: 1.5 }}>
@@ -99,14 +99,14 @@ const LoginPage = () => {
           )}
         </div>
         <CardActions>
-          <div className="w-full px-2 my-4">
-            <Button
-              variant="contained"
-              className="w-full h-12 flex items-center justify-center bg-red-500 hover:bg-red-600"
+          <div className="w-full px-2 my-4 ">
+            <button
+              
+              className="w-full h-12 flex items-center justify-center bg-red-500 hover:bg-red-600 rounded-lg text-white"
               onClick={handleLogin}
             >
               {loading ? <CircularProgress color="white" size={20} /> : "Login"}
-            </Button>
+            </button>
           </div>
         </CardActions>
       </Card>
