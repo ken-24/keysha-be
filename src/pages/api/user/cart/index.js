@@ -15,10 +15,12 @@ import {
 
 
 async function handler(req, res) {
+  const { userId } = req.decoded;
+
   try {
     if (req.method === "GET") {
 
-      const cartProducts = await getCartById();
+      const cartProducts = await getCartById(userId);
 
       return res
         .status(200)
@@ -26,7 +28,6 @@ async function handler(req, res) {
     }
     if (req.method === "DELETE") {
       const { itemId } = req.body;
-      const { userId } = req.decoded;
       const cartProducts = await getCartById();
       return res.status(200).json(resSuccess("Data Keranjang", cartProducts));
     }
