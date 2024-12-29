@@ -7,6 +7,7 @@ import {
 import userAuth from "@/middleware/userAuth";
 import {
   checkCart,
+  deleteCart,
   addProductToCart,
   updateQuantity,
   getCartById,
@@ -46,11 +47,11 @@ async function handler(req, res) {
 
       if (existingCartProduct) {
         // Jika sudah ada, tambahkan kuantitas
-        if (existingCartProduct.quantity + quantity < 0) {
+        if ((existingCartProduct.quantity + quantity) < 0) {
           return res
             .status(400)
             .json(resClientError("Kuantitas tidak boleh kurang dari 0"));
-        } else if(existingCartProduct.quantity + quantity == 0){
+        } else if((existingCartProduct.quantity + quantity) == 0){
           const updatedCart = await deleteCart(existingCartProduct.cartId);
 
           return res
@@ -64,7 +65,7 @@ async function handler(req, res) {
 
           return res
             .status(200)
-            .json(resSuccess("Product quantity updated in cart", updatedCart));
+            .json(resSuccess("Produk diupdate di keranjang", updatedCart));
         }
       }
 
