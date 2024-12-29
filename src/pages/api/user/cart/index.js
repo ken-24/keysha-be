@@ -35,7 +35,7 @@ async function handler(req, res) {
       const { userId } = req.decoded;
 
       // Validasi input
-      if (!itemId || !quantity) {
+      if (!itemId || quantity<0||quantity==null) {
         return res
           .status(400)
           .json(resClientError("Invalid item ID or quantity"));
@@ -46,10 +46,16 @@ async function handler(req, res) {
 
       if (existingCartProduct) {
         // Jika sudah ada, tambahkan kuantitas
-        if (existingCartProduct.quantity + quantity <= 0) {
+        if (existingCartProduct.quantity + quantity < 0) {
           return res
             .status(400)
             .json(resClientError("Kuantitas tidak boleh kurang dari 0"));
+        } else if(existingCartProduct.quantity + quantity == 0){
+          const updatedCart = await deleteCart(existingCartProduct.cartId);
+
+          return res
+            .status(200)
+            .json(resSuccess("Produk dihapus dari keranjang", updatedCart));
         } else {
           const updatedCart = await updateQuantity(
             existingCartProduct.cartId,

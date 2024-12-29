@@ -28,6 +28,13 @@ export const updateQuantity = async (cartId, newQuantity) => {
     },
   });
 };
+export const deleteCart = async (cartId) => {
+  return prisma.cart.delete({
+    where: {
+      cartId: cartId,
+    }
+  });
+};
 
 export const getCartById = async (userId) => {
   return prisma.cart.findMany({
